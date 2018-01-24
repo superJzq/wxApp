@@ -1,0 +1,16 @@
+<!-- 图片导航 -->
+
+<template name="6">
+
+<view wx:if = "{{showUserInfo == 1}}">
+
+</view>
+
+
+<view wx:else >
+  <image mode="widthFix" src="{{imageUrl}}" 
+   style="width:100%;display:block;" data-link='{{linkUrl}}' bindtap='tolinkUrl'></image>
+</view>
+
+
+</template>

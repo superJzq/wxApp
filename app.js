@@ -1,12 +1,20 @@
 //app.js 
 import { clientInterface } from "/public/clientInterface.js";
 import { dellUrl } from "/public/requestUrl.js";
+ 
 
-
-
+ 
 App({
-  clientUrl:'https://mini.sansancloud.com/chainalliance/',
-  clientNo:'naicha',
+ 
+  clientUrl:'https://mini.sansancloud.com/chainalliance/',  // 链接地址
+
+  /**
+   *   切换项目的开关 ↓↓↓↓↓
+   */
+  clientNo:'xianhua',   //自定义的项目的名称。
+
+  more_scene:'', //扫码进入场景   用来分销
+
   miniIndexPage:'',
   setting : null,
   loginUser: null,
@@ -32,9 +40,38 @@ App({
 
 
 
-  onLaunch: function () {
-    var that = this
-  
+  onLaunch: function (options) {
+    let that = this
+    console.log('------onlauch------')
+    console.log(options)
+    let inputPlatformNo = options.query.platformNo;
+    if (!!inputPlatformNo) {
+      this.clientNo = inputPlatformNo
+    }
+    let more_scene = decodeURIComponent(options.query.scene)
+    console.log(more_scene)
+    
+    if (!!more_scene){
+      this.more_scene = more_scene
+    }
+    
+
+      /* 第三方配置加载 clientNo */
+      wx.getExtConfig({
+        success: function (res) {
+          console.log('第三方配置')
+          console.log(res)
+          if (res.extConfig && res.extConfig.clientNo){
+            console.log(res.extConfig)
+            that.clientNo = res.extConfig.clientNo
+            
+          }
+        },
+        complete: function(res){
+          that.loadFirstEnter(more_scene)
+        }
+      })
+
    // console.log(appJson)
    // this.getSetting()
     wx.getUserInfo({
@@ -48,8 +85,17 @@ App({
     
   
   },
+
+  //第一次登录加载的函数
+  loadFirstEnter: function (more_scene){
+    this.getSetting()
+    this.wxLogin(more_scene)
+  },
+  loadScene: function (inputPlatformNo){
+    this.clientNo = inputPlatformNo
+  },
   globalData: {
-    userInfo: null,
+    userInfo: null, 
     sansanUser:null,
     sysWidth: wx.getSystemInfoSync().windowWidth, //图片宽度  
   },
@@ -76,6 +122,7 @@ App({
  //加载失败处理
  loadFail:function(){
    let that = this
+   /*
    wx.showModal({
      title: '提示',
      content: '加载失败，重新加载',
@@ -87,6 +134,11 @@ App({
 
        }
      }
+   })*/
+   wx.showToast({
+     title: "加载失败",
+     image: '/images/icons/tip.png',
+     duration: 2000
    })
  },
  //检查是否已经登录
@@ -202,8 +254,8 @@ App({
     var returnParam = "?"
     var str = [];
     for (var p in json) {
-      //str.push(p + "=" + json[p]);
-      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));
+      str.push(p + "=" + json[p]);
+      //str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));
     }
     returnParam += str.join("&")
     console.log(returnParam)
@@ -250,7 +302,7 @@ App({
     }
     else {
       wx.navigateTo({
-        url: "/pages/" + urlData.url + "/index",
+        url: "/pages/" + urlData.url + "/index" + urlData.param,
       })
     }
   },
@@ -403,25 +455,30 @@ App({
     })
   },
   /* 微信登录测试 */
-  wxLogin: function () {
+  wxLogin: function (more_scene) {
+    if (!more_scene || more_scene == 'undefined'){
+      more_scene = '0'
+    }
     console.log('--------------微信登录--------------')
     wx.showLoading({
       title: '登录中',
       mask: true
     })
     var that = this
-    var customIndex = that.AddClientUrl("/wx_mini_code_login.html", {}, 'post')
+    
     
     wx.login({
       success: function (res) {
         
         if (res.code) {
           //发起网络请求
+          let loginParam = {}
+          loginParam.code = res.code
+          loginParam.scene = more_scene
+          let customIndex = that.AddClientUrl("/wx_mini_code_login.html", loginParam, 'post')
           wx.request({
             url: customIndex.url,
-            data: {
-              code: res.code
-            },
+            data: customIndex.params,
             header: that.headerPost,
             method: 'POST',
             success: function (e) {
@@ -462,7 +519,9 @@ App({
                   content: '登录失败，重新登录',
                   success: function (res) {
                     if (res.confirm) {
-                      that.wxLogin()
+                      wx.navigateTo({
+                        url: '/pages/login/index'
+                      })
                     } else if (res.cancel) {
 
                     }
@@ -478,7 +537,9 @@ App({
                 content: '登录失败，重新登录',
                 success: function (res) {
                   if (res.confirm) {
-                    that.wxLogin()
+                    wx.navigateTo({
+                      url: '/pages/login/index'
+                    })
                   } else if (res.cancel) {
 
                   }
@@ -535,6 +596,7 @@ App({
 
         }else{
           self.setData({ setting: res.data })
+          self.setNavBar()
         }
         wx.hideLoading()
         return
@@ -554,15 +616,16 @@ App({
   },
   //微信内部地图
   openLocation: function () {
-
+    console.log('---------打开地图-------')
     let markers = this.setting.platformSetting.defaultShopBean
     let lat = Number(markers.latitude)
     let lng = Number(markers.longitude)
     let name = markers.shopName
     let address = ''
     wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      type: 'wgs84', //返回可以用于wx.openLocation的经纬度
       success: function (res) {
+        console.log('11111')
         wx.openLocation({
           latitude: Number(markers.latitude),
           longitude: Number(markers.longitude),
@@ -576,6 +639,9 @@ App({
             console.log(res)
           }
         })
+      },fail:function(res){
+        console.log('22222')
+        console.log(res)
       }
     })
   },

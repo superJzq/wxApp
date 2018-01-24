@@ -1,0 +1,53 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.6.0",
+	"appid": "wx37b3f495891dd60c",
+	"projectname": "%E4%BA%BF%E5%BE%B7%E5%A0%82",
+	"condition": {
+		"weapp": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "tet",
+					"pathName": "pages/index/index",
+					"query": "scene=PLATFORM_SUERID_12121"
+				},
+				{
+					"id": 1,
+					"name": "platformNo",
+					"pathName": "pages/custom_page_index/index",
+					"query": "platformNo=majiang"
+				}
+			]
+		},
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "带参扫码",
+					"pathName": "pages/index/index",
+					"query": "platformNo=shuiguo",
+					"scene": "1011"
+				}
+			]
+		}
+	}
+}

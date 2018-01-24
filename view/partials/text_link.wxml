@@ -1,0 +1,25 @@
+<!-- 文字导航 -->
+
+ 
+  <template name="5">
+  <view class='text_link' style="text-align:{{align}};background-color:{{bgColor}}" data-link='{{linkUrl}}' bindtap='tolinkUrl'>
+    <block wx:if="{{iconPath}}">
+      <view class="text_link_imageContainer flexCenter">
+        <image mode='aspectFit' src="{{iconPath}}"></image>
+      </view>
+      <view  style=" font-size:{{fontSize}}px;color:{{color}}" 
+        class="text_link_text flexCenter " >
+        {{text}}
+      </view>
+    </block>
+    <block wx:else>
+     
+      <view  style="font-size:{{fontSize}}px;color:{{color}};text-align:{{align}}" 
+        class="text_link_text2 flexCenter " data-link='{{linkUrl}}' bindtap='tolinkUrl'>
+        <text>{{text}}</text>
+        
+      </view>
+    </block>
+  </view>
+  
+</template>  

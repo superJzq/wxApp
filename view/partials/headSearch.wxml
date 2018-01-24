@@ -1,0 +1,19 @@
+ <!-- 头部导航 -->
+<template name="12">
+  <!-- <block wx:if='{{showSearch == 1}}'>
+  <view class="searchContainer" >
+    <view class="headSearch flexCenter" style='background:{{platformSetting.defaultColor}}'>
+      <view class="headSearch_input" >
+        <image class='searchIcon' src='/images/icons/search.png'></image>
+        <input confirm-type='搜索' bindconfirm='searchProduct' placeholder="请输入搜索产品关键词"></input>
+      </view>
+    </view>
+    <view class="headSearch_view_height"></view>
+  </view>
+  </block>
+  <block wx:else>
+     <view class='headTitle' style='height:{{height}}px;'>
+      {{title}}
+     </view>
+  </block> -->
+</template>

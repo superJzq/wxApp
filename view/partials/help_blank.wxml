@@ -1,0 +1,5 @@
+<!-- 空白辅助 -->
+<template name="3">
+<view  style="height:{{height}}px;background-color:{{color}} "></view>
+
+</template>

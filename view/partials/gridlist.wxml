@@ -1,0 +1,71 @@
+<!-- grid行列导航 -->
+
+<template name="8">
+ 
+  <view  class="showTypeContainer" wx:if="{{showType == 0}}">
+
+    <block wx:if="{{iconType == 0 }}">
+      <view class="grid_cell" style="width:{{100/ column}}%;" 
+         wx:for="{{cells}}" wx:for-item="cells" wx:key="{{index}}">
+        <view class=" {{cells.linkUrl}}" >{{cells.text}}</view>
+      </view>
+    </block>
+    
+    <block wx:else>
+      <view class="grid_cell" style="width:{{100/ column}}%;"  wx:for="{{cells}}" wx:for-item="cells" wx:key="{{index}}" data-link="{{cells.linkUrl}}" bindtap='tolinkUrl'>
+        <image style="" src="{{cells.iconPath}}?x-oss-process=style/preview"></image>
+        <view class=" {{cells.loginCheck}}" site_url="{{cells.linkUrl}}"  targetType="{{cells.targetType}}">
+          {{cells.text}}
+        </view>
+      </view>
+    </block>
+
+  </view>
+<!-- 到时候再改这个，先往下面看吧 -->
+  <view style="border:1px solid rgb(214,214,214);border-bottom:none;"
+   class="showTypeContainer" wx:if="{{showType == 1}}">
+
+    <block wx:if="{{iconType == 0 }}">
+      <view class="grid_cell" style="width:{{100/ column}}%;"  wx:for="{{cells}}" wx:for-item="cells" wx:key="{{index}}">
+        <view class=" {{cells.linkUrl}}" >{{cells.text}}</view>
+      </view>
+    </block>
+    
+    <block wx:else>
+      <view class="grid_cell" style="width:{{100/ column}}%;"  wx:for="{{cells}}" wx:for-item="cells" wx:key="{{index}}">
+        <image src="{{cells.iconPath}}"></image>
+        <view class=" {{cells.loginCheck}}" site_url="{{cells.linkUrl}}"  targetType="{{cells.targetType}}">
+          {{cells.text}}
+        </view>
+      </view>
+    </block>
+
+  </view>
+  <!-- <view  class="showTypeContainer_1"  wx:if="{{showType}} == 1">
+    <view class="grid_cell_1" style="width:{{100/ column}}%;"  wx:for="{{cells}}" wx:for-item="cells" wx:key="{{index}}">
+        <image src="{{cells.iconPath}}"></image>
+        <view class=" {{cells.loginCheck}}" site_url="{{cells.linkUrl}}"  targetType="{{cells.targetType}}">
+          {{cells.text}}
+        </view>
+      </view>
+  </view> -->
+
+ <!--  <view wx:if="{{showType}} == 2"></view> -->
+
+  <view  class="showTypeContainer3" 
+     wx:if="{{showType == 3}}">
+      <block  wx:for="{{cells}}" wx:for-item="cells" wx:key="{{index}}">
+        <block wx:if="{{index == 0}}">
+          <view class="grid_cell3_1" data-link = "{{cells.linkUrl}}" bindtap="tolinkUrl">
+            <image mode='scaleToFill' src="{{cells.iconPath}}?x-oss-process=style/preview"></image>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="grid_cell3_2" data-link = "{{cells.linkUrl}}" bindtap="tolinkUrl">
+            <image mode='scaleToFill' src="{{cells.iconPath}}?x-oss-process=style/preview"></image>
+          </view>
+        </block>
+      </block>
+  </view>
+
+</template> 

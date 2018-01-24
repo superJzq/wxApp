@@ -1,0 +1,65 @@
+<!-- swiper轮播图 -->
+
+<template name="4">
+    <!-- 头部类型  无 --> 
+  <block wx:if='{{showSearch == 0}}'>
+    <block wx:if='{{headIconType == 0}}'>
+      <block wx:if='{{rightIconType == 0}}'>
+        <view class='titleType0' style='text-align:{{align}};background:{{bgColor}};'>
+          <view class='T_head' style='color:{{titleColor}}; font-size:{{titleSize}}px;' >{{title}}</view>
+          <view class='T_right' style='color:{{subTitleColor}}; font-size:{{subTitleSize}}px;'>{{subTitle}}</view>
+        </view>
+      </block>
+
+      <block wx:if='{{rightIconType == 2}}'>
+        <view class='titleType2' style='text-align:{{align}};background:{{bgColor}};'>
+          <view class='T_head' style='color:{{titleColor}}; font-size:{{titleSize}}px;' >{{title}}</view>
+          <view class='T_right' style='' >
+            <image src='{{rightContent}}'></image>
+          </view>
+        </view>
+      </block>
+
+      <block wx:if='{{rightIconType == 3}}'>
+        <view class='titleType1' style='text-align:{{align}};background:{{bgColor}};'>
+          <view class='T_head' style='color:{{titleColor}}; font-size:{{titleSize}}px;' >{{title}}</view>
+          <view class='T_right' style='' >
+            <text>{{rightContent}}</text>
+          </view>
+        </view>
+      </block>
+
+    </block>
+
+    <block wx:if='{{headIconType == 1}}'></block>
+
+    <block wx:if='{{headIconType == 2}}'>
+      <view class='titleType5' style='text-align:{{align}};background:{{bgColor}};'>
+        <view class='T_head' style='color:{{titleColor}}; font-size:{{titleSize}}px;' >
+          <image src='{{headIcon}}'></image>
+          <text>{{title}}</text>
+        </view>
+        <view class='T_right' style='' >
+          <text>{{rightContent}}</text>
+        </view>
+      </view>
+    </block>
+
+  </block>
+  <block wx:if='{{showSearch == 1}}'>
+   
+      <!-- <view class="TitleHeadSearch1 flexCenter" style='background:{{platformSetting.defaultColor}}'>
+        <view class="TitleHeadSearch_input1" >
+          <image class='searchIcon' src='/images/icons/titleSearch.png'></image>
+          <input confirm-type='搜索' bindconfirm='searchProduct' placeholder=""></input>
+        </view>
+      </view> -->
+
+      <view class="TitleHeadSearch2 flexCenter" >
+        <view class="TitleHeadSearch_input2" >
+          <image class='searchIcon' src='/images/icons/titleSearch.png'></image>
+          <input confirm-type='搜索' bindconfirm='searchProduct' placeholder=""></input>
+        </view>
+      </view>
+  </block>
+</template>

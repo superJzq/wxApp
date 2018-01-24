@@ -1,0 +1,108 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/product_waimai_offline/index",
+    "pages/product_waimai/index",
+    "pages/custom_page_index/index",
+    "pages/news_list/index",
+    "pages/news_detail/index",
+    "pages/custom_page_copyright/index",
+    "pages/custom_page_userinfo/index",
+    "pages/custom_page_contact/index",
+    "pages/shopping_car_list/index",
+    "pages/brand_list/index",
+    "pages/brand_detail/index",
+    "pages/login/index",
+    "pages/regist/index",
+    "pages/regist_xieyi/index",
+
+    "pages/product/index",
+    "pages/search_product/index",
+    "pages/product_tree_list/index",
+    "pages/product_type2/index",
+    "pages/search_product2/index",
+    "pages/productDetail/index",
+
+    "pages/edit_order/index",
+    "pages/order_list/index",
+    "pages/order_detail/index",
+    "pages/back_item_list/index",
+    "pages/back_item_detail/index",
+    "pages/order_commit_detail/index",
+    "pages/order_shop_comment/index",
+    "pages/submit_order_result/index",
+
+    "pages/custom_page/index",
+    "pages/user_jifen_events/index",
+    "pages/my_coupons/index",
+    "pages/available_coupons/index",
+    "pages/my_favorite/index",
+    
+    "pages/pre_change_user_info/index",
+    "pages/message_counter2/index",
+    "pages/address/index",
+    "pages/add_address/index",
+    "pages/user_visit_items/index",
+    "pages/user_account_events/index",
+    "pages/user_recharge/index",
+    "pages/shop_manager_products/index",
+    "pages/shop_map/index",
+
+    "pages/fx_center/index",
+    "pages/fx_qrcode/index",
+    "pages/fx_users/index",
+    "pages/fx_yongjin_list/index",
+    "pages/tixian_list/index",
+    "pages/req_tixian_section/index",
+    
+    "pages/productDetail_derection/index",
+    "pages/productDetail_comment_list/index"
+
+  ],
+
+"tabBar": {
+  "color": "#7A7E83",
+  "selectedColor": "#000000",
+  "borderStyle": "black",
+  "backgroundColor": "#ffffff",
+  "list": [
+    {
+      "pagePath": "pages/custom_page_index/index",
+      "iconPath": "images/icons/home1.png",
+      "selectedIconPath": "images/icons/home2.png",
+      "text": "首页"
+    },
+    {
+      "pagePath": "pages/product_waimai_offline/index",
+      "iconPath": "images/icons/good1.png",
+      "selectedIconPath": "images/icons/good2.png",
+      "text": "产品"
+    },
+    {
+      "pagePath": "pages/shopping_car_list/index",
+      "iconPath": "images/icons/cart1.png",
+      "selectedIconPath": "images/icons/cart2.png",
+      "text": "购物车"
+    },
+    {
+      "pagePath": "pages/custom_page_userinfo/index",
+      "iconPath": "images/icons/me1.png",
+      "selectedIconPath": "images/icons/me2.png",
+      "text": "我的"
+    }
+  ]
+},
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle":"black"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

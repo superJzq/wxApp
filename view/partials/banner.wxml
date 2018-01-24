@@ -1,0 +1,28 @@
+<!-- swiper轮播图 -->
+
+<template name="7">
+  <block wx:if='{{height < 3}}'>
+    <view class='SwiperContainer' style='height:{{height * sysWidth}}px;'>
+      <swiper class='SwiperIndex' indicator-dots="true"
+        autoplay="true" interval="5000" duration="1000">
+        <block wx:for="{{images}}" wx:key="{{swiper}}">
+          <swiper-item>
+            <image mode='aspectFit' data-link='{{item.linkUrl}}' bindtap='tolinkUrl' src="{{item.imageUrl}}"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='SwiperContainer' style='height:{{height}}px;'>
+      <swiper class='SwiperIndex' indicator-dots="true"
+        autoplay="true" interval="5000" duration="1000">
+        <block wx:for="{{images}}" wx:key="{{swiper}}">
+          <swiper-item>
+            <image mode='aspectFit' src="{{item.imageUrl}}"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </block>
+</template>

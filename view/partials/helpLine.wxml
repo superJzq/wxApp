@@ -1,0 +1,4 @@
+<!-- 辅助线 -->
+<template name="2">
+  <view style='background:{{color}};height:{{size}}px;margin:{{5}}px 0;'></view>
+</template>

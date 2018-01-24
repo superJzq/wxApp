@@ -1,0 +1,138 @@
+ /* 4  title */
+
+
+/* 搜索 */
+.showSearchTitle{
+  padding: 5px 10px 5px 10px;
+  background: #fff;
+}
+.showSearchTitle > view{
+  width: 100%;
+  height: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.showSearchTitle_searchContainer input{
+  height: 100%;
+  width: 50%;
+}
+
+/* 1111111 */
+.TitleHeadSearch1{
+  width: 100%;
+  height: 44px;
+  background: #F77965;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.TitleHeadSearch1 .TitleHeadSearch_input1{
+  background: #fff;
+  height:29px;
+  width: 90%;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.TitleHeadSearch_input1 image{
+  height: 1.2em;
+  width: 1.2em;
+}
+.TitleHeadSearch_input1 input{
+  font-size: 0.7em;
+  height: 100%;
+  width: 80%;
+}
+/* 22222222 */
+.TitleHeadSearch2{
+  width: 100%;
+  height: 44px;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.TitleHeadSearch2 .TitleHeadSearch_input2{
+  background: #fff;
+  height:29px;
+  width: 90%;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.TitleHeadSearch_input2 image{
+  height: 1.2em;
+  width: 1.2em;
+}
+.TitleHeadSearch_input2 input{
+  font-size: 0.7em;
+  height: 100%;
+  width: 80%;
+}
+
+
+/* 普通 */
+.titleType0{
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; 
+}
+.titleType0 > .T_head{
+  
+}
+.titleType0 > .T_right{
+  margin-left: 5px;
+}
+
+
+.titleType1{
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.titleType2{
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleType2 > .T_right{
+  height: 20px;
+  width: 20px;
+}
+ .T_right >image{
+  height: 100%;
+  width: 100%;
+}
+
+.titleType5{
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.titleType5 > .T_head{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.T_head image{
+  height: 20px;
+  width: 20px;
+}
+.T_head text{
+  margin-left: 10px;
+}
