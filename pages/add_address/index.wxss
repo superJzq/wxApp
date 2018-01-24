@@ -1,0 +1,62 @@
+ /* pages/my_pages/address_new/index.wxss */
+.inputContainer{
+  border-bottom:1px solid #dddddd;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  font-size: small;
+}
+.InputName{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-indent: 12px;
+}
+.InputContent{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.InputContent2{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1rpx solid #aaa;
+  border-radius: 5px;
+  text-indent: 12px;
+}
+
+
+.zidonghuoqu{
+  padding: 10px;
+  font-size: small;
+  color: #aaa;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.zidonghuoqu image{
+  width: 1.4em;
+  height: 1.4em;
+}
+.zidonghuoqu text{
+  margin-left: 5px;
+}
+.signIn{
+  width: 90%;
+  margin-top: 15px;
+  font-size: small;
+  background:#8B572A;
+  border:none;
+  color:#fff;
+}
