@@ -1,0 +1,65 @@
+<view class='container'> 
+<block wx:if="{{!!cartData}}">
+  <checkbox-group bindchange="checkboxChange">
+    <view class='cartContainer' wx:for='{{cartData}}' wx:for-item='cartshop' wx:key='{{index}}'>
+      <view class='cartShopName'>{{cartshop.shopName}}</view>
+      
+      <view class='cartItems' wx:for='{{cartshop.carItems}}' wx:for-item='cart' wx:key='{{cart.id}}'>
+        <label class='itemCheckbox'>
+          <checkbox  checked='{{allchecked}}' color='{{setting.platformSetting.defaultColor}}' value='{{cart.id}}'></checkbox>
+          <image mode='aspectFill' src='{{cart.item.imagePath}}?x-oss-process=style/preview'></image>
+        </label> 
+
+        <view class='item_infomation'>
+          <view class='item_infomation_name' data-info='{{cart}}' catchtap='toProductDetail'>{{cart.item.name}}</view>
+          <view wx:if='{{cart.count > cart.stock}}' class='cart_stock_warn'>
+             库存不足，剩余库存（{{cart.stock}}） 
+          </view>
+
+          <view class='cart_infoMeasure'>
+            <view wx:for='{{cart.measureCartensian.measurements}}'
+             wx:for-item='mesure' wx:key='{{index}}'>{{mesure.measureName}}</view>
+          </view>
+
+          <view class='xxx' data-info='{{cart}}' catchtap='deleById'> 
+            <image src='/images/icons/x.png' ></image>
+          </view>
+          <view class='item_infomation_nums'> 
+            <image src='/images/icons/add2.png' data-id='{{cart.id}}' catchtap='subNum'></image>
+            <text class='flexCenter font1'>{{cart.count}}</text>
+            <image src='/images/icons/add.png' data-id='{{cart.id}}' catchtap='addNum' ></image>
+          </view>
+          <view  class='item_infomation_money'>￥ {{cart.carItemPrice}}</view>
+        </view>
+      </view>
+      <view class='butn_container'>
+        <view class='de' bindtap='delectChecked'>删除选中</view>
+        <view data-shopId='{{cartshop.id}}' bindtap='delectAll'>清空商品</view>
+      </view>
+
+    </view>
+  </checkbox-group>
+</block>
+<block wx:else>
+  <view class='noCart'>
+    <image mode='widthFix' src='/images/icons/nocart.png'></image>
+    <text>购物车空空如也</text>
+  </view>
+</block>
+ 
+</view>
+
+
+<view class='cart_buttom'>
+  <label class='chooseAll' bindtap='chooseAll'>
+    <checkbox checked='{{allchecked}}' color='{{setting.platformSetting.defaultColor}}'>全选</checkbox>
+  </label>
+  <view class='toJieSuan'>
+    <view class='toJieSuan_money'>
+      <view>本次支付: <text class='color'>￥  {{countPrice}}</text></view>
+      <text>商品数: <text>  {{countGood}}</text></text>
+    </view>
+    <view class='toJieSuan_butn' bindtap='createOrder'
+     style='background:{{setting.platformSetting.defaultColor}}'>去结算</view>
+  </view>
+</view>

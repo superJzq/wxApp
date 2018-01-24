@@ -1,0 +1,155 @@
+    <!--pages/productDetail/index.wxml-->
+<view class='container'>
+
+<view class='SwiperContainer'>
+    <swiper class='SwiperIndex' indicator-dots="true"
+      autoplay="true" interval="5000" duration="1000">
+      <block wx:for="{{productData.images}}"  wx:key="{{swiper}}">
+        <swiper-item>
+          <image mode='aspectFill' src="{{item.imagePath}}"/>
+        </swiper-item>
+      </block>  
+    </swiper>
+  </view>  
+ 
+  <view class='ProductDetailInfoContainer'>
+    <view class='InfoName'>{{productData.productInfo.name}}</view>
+    <block wx:if='{{!!productData.productInfo.description}}'>
+      <view class='InfoSubName'>{{productData.productInfo.description}}</view>
+    </block>
+    <view class='InfoPrice'>
+      <text class='p1'>￥{{productData.productInfo.price}}</text>
+      <block wx:if='{{productData.productInfo.tagPrice > productData.productInfo.price}}'>
+        <text class='p2'>￥{{productData.productInfo.tagPrice}}</text>
+      </block>
+    </view>
+    <view class='InfoYunfei'>
+      <text >运费：￥{{productData.productInfo.yunfei}}</text>
+    </view>
+    <view wx:if='{{productData.productInfo.saleStrategy}}' class='saleStrategy'>
+        <view class='saleStrategyItems'> 
+          <view class='saleStrategyItems_name'>批发数量</view>
+          <view class='saleStrategyItems_price'>批发价格</view>
+       </view>
+       <view class='saleStrategyItems' wx:for='{{productData.productInfo.saleStrategyDetails}}' wx:for-item='saleStrategy' wx:key='{{index}}'> 
+          <view class='saleStrategyItems_name'>{{saleStrategy.leastProductCount}}</view>
+          <view class='saleStrategyItems_price'>￥ {{saleStrategy.computePrice}}</view>
+       </view>
+    </view>
+     <view class='InfoTags_container'>
+        <view class='InfoTags' wx:for='{{targs}}' wx:key='{{index}}'>
+          <image src='/images/icons/targ.png'></image>
+          <text>{{item}}</text>
+        </view>
+     </view>
+  </view>
+<view class='helpBlank'></view>
+
+    <view class='tab'>
+      <view class='{{showState == 0 ? "active":""}}' data-id='0' bindtap='showCouponState'>图文详情</view>
+      <view class='{{showState == 1 ? "active":""}}' data-id='1' bindtap='showCouponState'>规格参数</view>
+      <view class='{{showState == 2 ? "active":""}}' data-id='2' bindtap='showCouponState'>商品评价</view>
+    </view>
+
+    <import src="../../wxParse/wxParse.wxml"/><!-- 富文本 -->
+
+
+    <view class="tab_detail_container">
+      <block wx:if='{{showState == 0}}'>
+        <template is="1"   data="{{wxParseData:article.nodes}}"></template> 
+      </block>
+      <block wx:if='{{showState == 1}}'>
+        <view class='attr_container'>
+            <view class='attr_item' wx:for='{{productData.attrs}}' wx:key='{{index}}'>
+               <text>{{item.attributeName}}:</text>
+               <view>{{item.attributeValue}}</view>
+            </view>
+        </view>
+      </block>
+      <block wx:if='{{showState == 2}}'>
+        <view class='pingjia_container'>
+          <block wx:if='{{!!commitList}}'>
+            <view class='pingjia_item' wx:for='{{commitList}}' wx:key='{{index}}'>
+              
+              <image class='UserIcon' mode='widthFix' src='{{item.commentUserIcon}}'></image>
+               
+               <view class='CommitInfo'>
+                  <view class='name'>{{item.commentUserName}}</view>
+                  <view class='other'>{{item.comment}}</view>
+                  <view class='other2'>{{item.commentTime}}</view>
+               </view>
+            </view>
+          </block>
+          <block wx:else>
+              <view>没有评价</view>
+          </block>
+        </view>
+      </block>
+    </view>
+</view>
+
+
+<!-- 底部按钮们 -->
+<view class='bottomHeight'></view>
+<view class='product_detail_bottom_container'>
+  <button open-type='contact' class='left_bottom_contact' >
+    <image mode='aspectFit' src='/images/icons/kefu.png'></image>
+    <text>客服</text>
+  </button>
+  <view class='left_bottom' >
+    <block wx:if='{{!productData.productInfo.favorite}}'>
+      <image  data-itemId='{{productData.productInfo.productId}}' bindtap='addToFavourite' mode='aspectFit' src='/images/icons/star.png'></image>
+    </block>
+    <block wx:else>
+      <image data-itemId='{{productData.productInfo.productId}}' bindtap='removeFavourite' mode='aspectFit' src='/images/icons/star2.png'></image>
+    </block>
+    <text>收藏</text>
+  </view>
+  <view class='left_bottom' bindtap='toCart'>
+    <view class='cartNumber' style='background:{{setting.platformSetting.defaultColor}}'>{{countGood}}</view>
+    <image mode='widthFix' src='/images/icons/cartddd.png'></image>
+    <text>购物车</text>
+  </view>
+  <view class='right_bottom addto' data-way='cart' bindtap='readyPay2'>加入购物车</view>
+  <view class='right_bottom bynow' data-way='buy' bindtap='readyPay2' style='background:{{setting.platformSetting.defaultColor}}'>立即购买</view>
+</view>
+
+<block wx:if='{{showCount}}' >
+   <view class='countContainer'>
+      <view class='CountTopInfo'>
+        <view class='CountTopInfo_image_container'>
+          <image mode='aspectFill' src='{{productData.productInfo.imagePath}}'></image>
+        </view>
+        <view class='CountTopInfo_text_container'>
+          <view class='namenamename'>{{productData.productInfo.name}}</view>
+          <view class='price' wx:if='{{productData.measures.length == 0}}'>￥{{productData.productInfo.price}}</view>
+          <view class='price' wx:else>￥{{measurementJson.price}}</view>
+          <view class='font2'>商品编号: {{productData.productInfo.orderNumber}}</view>
+        </view>
+      </view>
+      <view class='measureItemContainer' wx:if='{{productData.measures}}'>
+        <view class='cardMid'  wx:for='{{productData.measures}}' wx:for-item='types' wx:key='{{index}}'>
+        <view class='cardMidName'>{{types.name}}</view>
+        <radio-group class='cardMidGuigeContainer' name='{{types.name}}' bindchange='chooseMeasure'>
+          <label wx:for='{{types.productAssignMeasure}}' wx:for-item='Measure' wx:for-index="i" wx:key='{{i}}'
+          data-index='{{index}}-{{i}}' bindtap='radioChange'>
+            <view class='{{types.checkedMeasureItem == i? "activeMeasure":""}}'>{{Measure.measureName}}</view>
+            <radio checked='{{types.checkedMeasureItem == i}}' value='{{Measure.measureTypeName}}-{{Measure.id}}' hidden='true'></radio>
+          </label>
+        </radio-group>
+      </view>
+      <view class='ItemCountDell'>
+        <view>购买数量</view>
+        <view class='item_infomation_nums'> 
+            <image src='/images/icons/add2.png'  catchtap='subNum'></image>
+            <text class='flexCenter'>{{byNowParams.itemCount}}</text>
+            <image src='/images/icons/add.png'  catchtap='addNum' ></image>
+          </view>
+      </view>
+      <view style='background:{{setting.platformSetting.defaultColor}}' 
+      class='sureButn' bindtap='buyNow'>确定</view>
+  </view>
+  </view>
+</block>
+<view class='zhezhao' wx:if="{{showCount}}" bindtap='closeZhezhao'></view>
+

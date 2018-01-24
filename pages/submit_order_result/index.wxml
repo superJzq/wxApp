@@ -1,0 +1,19 @@
+<view class='container'>
+  <view class='addrtop' style='background: {{setting.platformSetting.defaultColor}};'><view></view></view>
+  
+  <view class='successIcon'><icon type='success' size='40' color="{{setting.platformSetting.defaultColor}}"></icon></view>
+
+  <view class='Items'>订单编号: {{success.orderNo}}</view>
+  <view class='Items'>订单应付金额:￥ {{success.goodsAmount}}</view>
+  <view class='Items'>优惠金额:￥ {{success.youhuiAmount}}</view>
+  <view class='Items'>支付方式: {{success.payTypeStr}}</view>
+  <block wx:if='{{success.payType == 2}}'>
+    <view class='Items'>充值说明: <text class='main' style="color:{{setting.platformSetting.defaultColor}}"
+     bindtap='toAccount'>点击查看余额充值方式</text></view>
+  </block>
+
+
+
+  <button class='butn' data-orderNo='{{success.orderNo}}' bindtap='payNow' style="background:{{setting.platformSetting.defaultColor}}">立即支付</button>
+  <button class='butn' bindtap='toIndex' style="background:{{setting.platformSetting.defaultColor}}">返回首页</button>
+</view>

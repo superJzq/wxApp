@@ -1,0 +1,9 @@
+<view class='container'>
+  <view class='chongzhijine'>
+    <text>提现金额</text>
+    <input value='{{money}}' bindinput='getBuyerScript'  placeholder=''></input>
+  </view>
+  
+  <button bindtap='subMitButn' class='subMitButn' style='background:{{setting.platformSetting.defaultColor}}'>立即提现</button>
+
+</view>
