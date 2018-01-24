@@ -1,0 +1,254 @@
+ /* pages/cart/index.wxss */
+.container{
+    background: #fff;
+    font-size: small;
+}
+/* 地址模块 */ 
+
+.addrItems{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:1em solid #f2f2f2;
+}
+.addrItems > image{
+  width: 1em;
+  height: 1em;
+  margin-right: 15px;
+}
+.addrItems > .addrItems_info{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.addrItems_info{
+}
+.addrItems_info image{
+  width: 1.4em;
+  height: 1.4em;
+
+}
+.addrItems_info view{
+  margin-left: 10px;
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+}
+.addrName{
+  padding-bottom: 5px;
+}
+.font2{
+  font-size: xx-small;
+  width: 100%;
+}
+
+/* 购物车列表 */
+.cartContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #888;
+  background: #fff;
+  font-size: small;
+}
+.cartShopName{
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dddddd;
+}
+.cartItems{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  overflow: hidden;
+  border-bottom: 1px solid #dddddd;
+  height: 5em;
+  position: relative;
+}
+.itemCheckbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+.itemCheckbox image{
+  width: 5em;
+  height: 5em;
+}
+
+.item_infomation{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+.item_infomation_name{
+  width: 12em;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.item_infomation_money{
+  color: #8B572A;
+}
+/* 加和减 */
+.item_infomation_nums{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  right: 2em;
+  top: 2.2em;
+}
+
+.item_infomation_nums text{
+  padding: 5px;
+  font-size: small;
+  color: #aaa;
+}
+
+/* 横向显示 */
+
+.butn_container{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dddddd;
+}
+.youhuiquan{
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #333;
+}
+.youhuiquan view{
+  margin-left: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 5px 30px 5px 10px;
+}
+.butn_container2{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #dddddd;
+}
+.butn_container2 input{
+  margin-left: 5px;
+  width: 70%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 5px 5px 5px 5px;
+}
+/* 积分抵扣 */
+.jifenContainer{
+  padding: 15px 10px;
+  display: flex;
+  background: #fff;
+  color: #333;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dddddd;
+}
+.jifenContainer > view{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+/* 支付方式 */
+.payName{
+  padding: 10px;
+  display: flex;
+  background: #f2f2f2;
+  color: #aaa;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #dddddd;
+}
+
+.payWay{
+  padding: 15px 10px;
+  display: flex;
+  background: #fff;
+  color: #333;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #dddddd;
+  
+}
+.payWay text{
+  margin-left: 3em;
+}
+
+.height{
+  height: 4em;
+}
+.fottButn{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 3.6em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  align-items: center;
+  background: #8B572A;
+  color: #fff;
+  font-size: small;
+}
+
+/* 地址框框 */
+.OtherArrContainer{
+  position: fixed;
+  z-index: 12;
+  right: 0;
+  top: 0; 
+  bottom: 0;
+  left: 20%;
+  background: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+}
+.addnewarr{
+  padding: 10px;
+  text-align: center;
+  color: #8B572A;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.addrItems2{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px dashed rgb(240,240,240);
+  background: #fff;
+  padding: 10px;
+}
+.addrItems2 image{
+  width: 1.4em;
+  height: 1.4em;
+
+}
+.addrItems2 view{
+  margin-left: 10px;
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+}
+.addrItems2 .font2{
+  margin-top: 5px;
+}

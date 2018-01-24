@@ -1,0 +1,42 @@
+<import src="../../wxParse/wxParse.wxml"/><!-- 富文本  1-->
+
+<import src="../../view/partials/helpLine.wxml"/>  <!-- 2 辅助线 -->
+<import src="../../view/partials/help_blank.wxml"/><!-- 3 空白辅助-->
+<import src="../../view/partials/title.wxml"/><!-- 4 标题-->
+<import src="../../view/partials/text_link.wxml"/>  <!-- 5 -->
+<import src="../../view/partials/image_link.wxml"/><!-- 6 -->
+<import src="../../view/partials/banner.wxml"/><!-- 7 -->
+<import src="../../view/partials/gridlist.wxml"/><!-- 8 -->
+<import src="../../view/partials/detail_list.wxml"/><!-- 9 -->
+<import src="../../view/partials/footer_tab.wxml"/><!-- 11 -->
+<import src="../../view/partials/headSearch.wxml"/><!-- 12 -->
+<import src="../../view/partials/mofang.wxml"/> <!-- 14 -->
+
+<import src="../../view-new/partials/user_center_top_image.wxml"/><!-- user_center_top_image -->
+<import src="../../view-new/partials/user_center_order.wxml"/><!-- user_center_order -->
+<import src="../../view-new/partials/user_center_order2.wxml"/><!-- user_center_order -->
+
+
+
+
+<!-- 
+方法1：把所有的组件都导入进来，然后根据传过来的partials规则里面的排序来渲染组件 
+<template is="{{index%2 === 0 ? 'courseLeft' : 'courseRight'}}" data="{{...item}}"></template>
+-->
+<view class="container">
+  <block wx:for="{{PaiXuPartials}}" wx:key="{{temp}}">
+    <!-- <template is="{{item.partialType}}" 
+       data="{{...item.jsonData}}"></template>
+ -->
+        <template is="{{!!item.androidTemplate ? item.androidTemplate : item.partialType }}" 
+       data="{{...componentData,...userInfo,...item.jsonData, loginUser:loginUser,wxParseData:article.nodes}}"></template> 
+  </block>
+</view>
+
+
+<!-- 
+根据后台数据，动态渲染页面
+首先制作组件，
+然后根据后台传来的particul去找组件然后渲染到小程序页面上，
+
+ -->

@@ -1,0 +1,11 @@
+<!--pages/contact/index.wxml-->
+<view class='contactPage'>
+  <view>有需要请联系我</view>
+   <button open-type='contact' class='button'>
+      客服    
+  </button> 
+  <!-- <contact-button class='button'>
+  客服
+  </contact-button> -->
+</view>
+     

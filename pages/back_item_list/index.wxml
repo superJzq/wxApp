@@ -1,0 +1,56 @@
+<view class='container'>
+ <block wx:if='{{!orderList}}'>
+    <view class='none'>没有相关订单</view>
+ </block>
+ <block wx:else>
+    <view class='cartContainer' wx:for='{{orderList}}' wx:for-item='list' wx:key='{{index}}'>
+      <view class='cartShopName'>
+        <text>订单号：{{list.belongOrderNo}}</text>
+        <!-- <text class='color'>{{list.easyStatusStr}}</text> -->
+      </view>
+      <view class='cartItems'  >
+        <view class='itemCheckbox'>
+          <image src='{{list.itemIcon}}'></image>
+        </view>
+        <view class='item_infomation'>
+          <view class='item_infomation_name'>{{list.itemName}}</view>
+           <view class='item_infomation_name' wx:if='{{!!list.measureCartesianId}}'>{{list.measures}}</view>
+          <view class='item_infomation_nums'> 
+          <block wx:if='{{list.backItem == 0}}'>
+            <text class='flexCenter butnForTuiKuan' data-orderNo='{{list.id}}' bindtap='tuikuan' style='color:#fff;background:{{setting.platformSetting.defaultColor}};'>申请退款</text>
+          </block>
+          <block wx:if='{{list.backItem == 1}}'>
+            <text class='flexCenter butnForTuiKuan' style='color:{{setting.platformSetting.defaultColor}}'>退款处理中</text>
+            </block>
+          <block wx:if='{{list.backItem == 3}}'>
+            <text class='flexCenter butnForTuiKuan' style='color:{{setting.platformSetting.defaultColor}}'>退款成功</text>
+            </block>
+          <block wx:if='{{list.backItem == 5}}'>
+          <text class='flexCenter butnForTuiKuan' data-orderNo='{{list.id}}' bindtap='tuikuan' style='color:#fff;background:{{setting.platformSetting.defaultColor}};'>申请退款</text>
+            <text class='flexCenter butnForTuiKuan' style='color:{{setting.platformSetting.defaultColor}}'>拒绝退款</text>
+
+          </block>
+          </view>
+          <view class='item_infomation_money'>
+            <text style='color:{{setting.platformSetting.defaultColor}};'>单价:￥ {{list.itemPrice}} x{{list.itemCount}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 订单类型不同，按钮不一样 -->
+      <!-- <view wx:if='{{list.orderStatus == 1}}' class='butn_container2'>
+          <text data-order='{{list}}' bindtap='editOrder'>编辑订单</text>
+          <text>付款</text>
+          <text data-orderNo='{{list.orderNo}}' bindtap='delectOrder'>删除订单</text>
+      </view>
+      <view wx:if='{{list.orderStatus == 2}}' class='butn_container2'>
+          <text data-order='{{list}}' bindtap='arriverOrder'>订单到货</text>
+      </view>
+      <view wx:if='{{list.orderStatus == 3}}' class='butn_container2'>
+          <text data-order='{{list}}' bindtap='pingjiaOrder'>评价</text>
+      </view> -->
+    </view>
+
+ </block>
+  
+</view>

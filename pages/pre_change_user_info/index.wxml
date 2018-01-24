@@ -1,0 +1,19 @@
+ <view> 
+  <form class='info_Form' bindsubmit="changeUserInfo">
+    <view class='inputGroup' catchsubmit="changeUserInfo">
+      <image src='{{loginUser.userIcon}}' mode='aspectFill' bindtap='changeImage' ></image><!--  -->
+      <input placeholder="用户昵称" name='nickname' value='{{loginUser.nickName}}'></input>
+      <input placeholder="手机号码" name='telno' value='{{loginUser.telno}}'></input>
+      <input placeholder="个性签名" name='userTip' value='{{loginUser.platformUser.userTip}}'></input>
+    </view> 
+    <view class='CheckBox'>
+      <radio-group name='sex' bindchange='sexChange'>
+        <radio name="sex1" value='1' color='{{setting.platformSetting.defaultColor}}' checked='{{!!loginUser.sex}}'>男</radio>
+        <radio name="sex1" value='0' color='{{setting.platformSetting.defaultColor}}' checked='{{!loginUser.sex}}'>女</radio>
+      </radio-group>
+    </view>
+    <button class='signIn' formType="submit" style='color:#fff;background:{{setting.platformSetting.defaultColor}}'>修改用户资料</button>
+    <button class='login_out' bindtap='loginOut'
+     style='color:{{setting.platformSetting.defaultColor}};border:1px solid {{setting.platformSetting.defaultColor}}'>退出登录</button>
+  </form>
+</view>

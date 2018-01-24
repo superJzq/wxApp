@@ -1,0 +1,23 @@
+<view class='container'>
+   
+    <view class='couponListContainer'>
+      <view class='couponListItem' wx:for='{{showCoupon}}' wx:for-item='cou' wx:key='{{cou.id}}'>
+          <view class='itemHead' style='background:{{setting.platformSetting.defaultColor}}'>{{cou.name}}</view>
+          <view class='itemBody'>
+            <text>{{cou.zhekou}}</text>
+            <view>
+              <view class='ccc'>满{{cou.orderAmount}}可用</view>
+              
+              <block wx:if='{{!!cou.userGotCoupon.length}}'>
+                <view class='hadGet'>已领取</view>
+              </block>
+              <block wx:else>
+                <view class='notGet' style='background:{{setting.platformSetting.defaultColor}}' data-id='{{cou.id}}' bindtap='GotCoupon'>领取优惠券</view>
+              </block>
+            </view>
+          </view>
+          <view class='itemBottom'>{{cou.startDate}} 至 {{cou.endDate}}</view>
+      </view>
+    </view>
+    
+</view>

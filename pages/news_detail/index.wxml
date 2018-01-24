@@ -1,0 +1,13 @@
+
+
+<import src="../../wxParse/wxParse.wxml"/><!-- 富文本 -->
+
+
+<view class="container">
+    
+        <template is="1"   data="{{wxParseData:article.nodes}}"></template> 
+
+</view>
+
+
+
